@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+       #container{
+        width: 80%;
+        grid-template-columns: repeat(4,1fr);
+        grid-template-rows: auto;
+        display: grid;
+        gap: 10px;
+        text-align: center;
+        margin: auto;
+    }
+    #container>div{
+        width: 95%;
+        height: auto;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        margin: auto;
+        border-radius: 5px;
+
+
+    }
+    p{
+        margin-top: -18px;
+        color:  #615c6a;
+    }
+    div>img{
+        width: 100%;
+        height: auto;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+
+    }
+    /* div>:nth-child(2){
+        margin-bottom: -0px;
+    } */
+    h1{
+        font-size: 25px;
+    }
+    p+img{
+        width: 100px;
+       
+    }
+    </style>
+  </head>
+  <body>
+    <h1>Frontend</h1>
+    <div id="container"></div>
+  </body>
+</html>
+
+<script>
+  var investorsArr = JSON.parse(localStorage.getItem("investorsData"));
+  console.log(investorsArr);
+  
+  investorsArr.forEach(element => {
+        console.log(element)
+        var div=document.createElement("div")
+
+        var image=document.createElement("img")
+        image.setAttribute("src",element.investorImg)
+
+        var name=document.createElement("h1")
+        name.innerText=element.investorName
+
+        var position=document.createElement("p")
+        position.innerText=element.investorRole
+
+        var logo=document.createElement("img")
+        logo.setAttribute("src",element.investorCompanyLogo)
+
+        div.append(image,name,position,logo)
+        document.querySelector("#container").append(div)
+    });
+
+</script>
