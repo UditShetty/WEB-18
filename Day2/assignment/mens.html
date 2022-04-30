@@ -5,13 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mens page</title>
-    <style>
-        #container{
-            display: grid;
-            grid-template-columns: repeat(4,1fr);
-            grid-template-rows: auto;
-            gap: 10px;
-        }
+   <link rel="stylesheet" href="product.css">
+       <style>
+        
     </style>
 </head>
 <body>
@@ -20,6 +16,7 @@
 </body>
 </html>
 <script>
+  var addto=  JSON.parse(localStorage.getItem("added")) ||[]
     var mensData = [
     {
       image_url:
@@ -274,9 +271,10 @@
       strikedoffprice: 1799,
     },
   ];
-
-  mensData.forEach(element => {
-        console.log(element)
+    dispayData(mensData)
+    function dispayData(data){
+      data.forEach(element => {
+        //console.log(element)
         var div=document.createElement("div")
 
         var image=document.createElement("img")
@@ -293,9 +291,25 @@
 
         var button= document.createElement("button")
         button.innerText="Add to cart"
+        button.addEventListener("click",function(){
+         // console.log("click me")
+           addtocart(element)
+        })
 
         div.append(image,name,price,strikedprice,button)
 
         document.querySelector("#container").append(div)
+
+        
   })
+    }
+      
+
+  function addtocart(element){
+         console.log(element)
+         addto.push(element)
+         localStorage.setItem("added",JSON.stringify(addto))
+  }
+
+  
 </script>
