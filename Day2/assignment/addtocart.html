@@ -6,11 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="product.css">
+
 </head>
 <body>
     <h1>Add to cart</h1>
-    <h1>Total:</h1>
-    <div id="container"></div>
+    <div class="contain">
+      <h1 id="total"></h1>
+      <div id="container"></div>
+     
+    </div>
+    
 </body>
 </html>
 
@@ -18,6 +23,18 @@
 
     var addto=JSON.parse(localStorage.getItem("added"))
     console.log(addto)
+
+    var total = addto.reduce(function (sum, elem, index, arr) {
+return sum + Number(elem.price);
+}, 0);
+
+var length = addto.length;
+console.log(length);
+
+console.log(total);
+
+document.querySelector("#total").innerText = ` you have ${length} items in cart and  total: ${total}`;  
+
     dispayData(addto)
     function dispayData(data){
       data.forEach(function (element,index) {

@@ -5,14 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="navbar.css">
+    <style>
+        .container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1b2938;
+
+            border-radius: 5px;
+            height: 50px;
+        }
+        .container div a{
+            text-decoration: none;
+            color: white;
+        }
+        .box{
+            margin-left: 5px;
+            border: 2ox solid yellow;
+            width: 100px;
+            height: 30px;
+        }
+        #icon{
+            width: 500px;
+            height: 30px;
+            display: flex;
+            justify-content: space-evenly;
+            /* border: 2px solid greenyellow */
+        }
+    </style>
 </head>
 <body>
-    <div id="navbar">
-        <div><a href="mens.html" target="blank">Mens</a></div>
-        <div><a href="womens.html" target="blank">Womens</a></div>
-        <div><a href="addtocart.html" target="blank">Add to cart</a></div>
-        
-      </div>
+    <div class="container">
+        <div class="box">
+            <a href="">Masai School</a>
+        </div>
+        <div id="icon">
+            <a href="mens.html">Men</a>
+            <a href="womens.html">Women</a>
+            <a href="signin.html">Login</a>
+            <a href="createaccount.html">Sign Up</a>
+        </div>
+    </div>
 </body>
 </html>
