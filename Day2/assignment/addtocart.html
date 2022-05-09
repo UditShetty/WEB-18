@@ -142,7 +142,7 @@ document.querySelector("#total").innerText = ` you have ${length} items in cart 
   function removefun(element,index){
    addto.splice(index,1)
    localStorage.setItem("added",JSON.stringify(addto))
-   alert("item added to cart")
+   alert("item deleted to cart")
    window.location.reload()
   }
 }
