@@ -9,6 +9,17 @@
 
 </head>
 <body>
+  <select id="sortNames" onChange="handleNameSort()">
+    <option>Sort By Name</option>
+    <option value="asc">Ascending</option>
+    <option value="dsc">Descending</option>
+  </select>
+
+  <select id="sortSalary" onChange="handleSalarySort()">
+    <option>Sort By Salary</option>
+    <option value="HTL">High to Low</option>
+    <option value="LTH">Low to High</option>
+  </select>
     <h1>Add to cart</h1>
     <div class="contain">
       <h1 id="total"></h1>
@@ -23,6 +34,64 @@
 
     var addto=JSON.parse(localStorage.getItem("added"))
     console.log(addto)
+    dispayData(addto)
+
+    function handleSalarySort() {
+      var selected = document.querySelector("#sortSalary").value;
+      //console.log(selected);
+      if (selected == "HTL") {
+        addto.sort(function (a, b) {
+          return b.price - a.price;
+        });
+        // console.log(addto);
+        displayData(addto);
+      }
+      if (selected == "LTH") {
+        addto.sort(function (a, b) {
+          return a.price - b.price;
+        });
+        // console.log(addto);
+        //displayData(addto);
+      }
+    }
+    // document
+    //   .querySelector("#sortNames")
+    //   .addEventListener("change", handleNameSort);
+    function handleNameSort() {
+      var selected = document.querySelector("#sortNames").value;
+      console.log(selected);
+
+      if (selected == "asc") {
+        addto.sort(function (a, b) {
+          var x = a.name.toUpperCase();
+          var y = b.name.toUpperCase();
+          if (x > y) {
+            return 1;
+          }
+          if (x < y) {
+            return -1;
+          }
+          return 0;
+        });
+        console.log(addto);
+        //displayData(addto);
+      }
+      if (selected == "dsc") {
+        addto.sort(function (a, b) {
+          var x = a.name.toUpperCase();
+          var y = b.name.toUpperCase();
+          if (x > y) {
+            return -1;
+          }
+          if (x < y) {
+            return 1;
+          }
+          return 0;
+        });
+        console.log(addto);
+        //displayData(addto);
+      }
+    }
 
     var total = addto.reduce(function (sum, elem, index, arr) {
 return sum + Number(elem.price);
@@ -35,7 +104,7 @@ console.log(total);
 
 document.querySelector("#total").innerText = ` you have ${length} items in cart and  total: ${total}`;  
 
-    dispayData(addto)
+    
     function dispayData(data){
       data.forEach(function (element,index) {
         //console.log(element,index)

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=1, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="signandcreate.css">
-    <link rel="stylesheet" href="../we/navbar.css">
+    <link rel="stylesheet" href="navbar.css">
 
     <script src="https://kit.fontawesome.com/4cb1a40bcb.js" crossorigin="anonymous"></script>
     
@@ -57,7 +57,7 @@
 
 <script>
 
-    var data=JSON.parse(localStorage.getItem("userData")) || []
+    var userCreds=JSON.parse(localStorage.getItem("userData")) || []
   var form=document.querySelector("form").addEventListener("submit",function(event){
       event.preventDefault()
 
@@ -67,8 +67,9 @@
       }
       if(data===null){
           alert("Please Create an Accoount")
+          window.location.href="createaccount.html"
       }
-      else if(data.email===data.email && data.password ==data.password){
+      else if(userCreds.email===data.email && userCreds.password ==data.password){
           alert("Sign is Successfull")
           localStorage.setItem("signin",JSON.stringify(data))
           window.location.href="mens.html"
